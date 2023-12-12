@@ -26,6 +26,7 @@ packages=(
   python3
   python3-dev
   python3-pip
+  software-properties-common
   sudo
   unzip
   vim-nox

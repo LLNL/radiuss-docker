@@ -1,10 +1,9 @@
 ARG ubuntu_version
-# FROM ghcr.io/llnl/ubuntu:$ubuntu_version
-FROM ubuntu-base
+FROM ghcr.io/llnl/ubuntu:$ubuntu_version
 
 # Install llvm with spack
 # ARG llvm_version
-ENV llvm_version=12
+ENV llvm_version=${llvm_version}
 
 RUN \
     sudo apt-get -qq update \
