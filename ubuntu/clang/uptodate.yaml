@@ -3,24 +3,24 @@ dockerbuild:
   # Specific combinations of build args to exclude (optional)
   # Spack doesn't work with 14 nor 15
   exclude:
-    llvm_version: ["14.0.0", "15.0.0"]
+    llvm_version: ["14", "15"]
     ubuntu_version: ["20.04", "20.04"]
 
   build_args:
     llvm_version:
       key: llvm
-      name: llvm
-      type: spack
-
-      # Only install x.0.0 versions
-      filter: 
-        - "^[0-9]+[.]0[.]0$"
-
-      # Greater than 10.0.0
-      startat: "10.0.0"
+      versions:
+        - "10"
+        - "11"
+        - "12"
+        - "13"
+        - "14"
+        - "15"
+        - "16"
 
     # Only support those in spack build cache
     ubuntu_version:
       key: ubuntu
       versions:
         - "20.04"
+        - "22.04"

@@ -1,28 +1,23 @@
 ARG ubuntu_version
-FROM ghcr.io/rse-ops/ubuntu:$ubuntu_version
+# FROM ghcr.io/llnl/ubuntu:$ubuntu_version
+FROM ubuntu-base
 
 # Install llvm with spack
-ARG llvm_version
-ENV llvm_version=$llvm_version
-ENV llvm_spec="llvm@${llvm_version}+llvm_dylib+link_llvm_dylib~split_dwarf~lldb~polly build_type=MinSizeRel" \
-    # these are safe here only because spack ignores them
-    COMPILER_NAME=clang \
-    COMPILER_VERSION=$llvm_version \
-    CC=/opt/view/bin/clang \
-    CXX=/opt/view/bin/clang++ \
-    CPP=/opt/view/bin/clang-cpp
+# ARG llvm_version
+ENV llvm_version=12
 
-# build compiler and set defaults
-RUN spack external find hwloc ncurses \
- && spack spec --reuse "${llvm_spec}" \
- && spack add "${llvm_spec}" \
- && spack mirror add develop https://binaries.spack.io/releases/develop \
- && spack buildcache keys --install --trust \
- && spack install --fail-fast \
- && spack compiler add \
- && spack config add "packages:all:compiler:[${COMPILER_NAME}@${COMPILER_VERSION}]" \
- && update-alternatives --install /usr/bin/cc cc ${CC} 50 \
- && update-alternatives --install /usr/bin/c++ c++ ${CXX} 50 \
- && update-alternatives --install /usr/bin/cpp cpp ${CPP} 50 \
- && update-alternatives --install /usr/bin/c89 c89 ${CC} 50 \
- && update-alternatives --install /usr/bin/c99 c99 ${CC} 50
+RUN \
+    sudo apt-get -qq update \
+    && sudo apt-get -qq install -y --no-install-recommends \
+        clang-${llvm_version} clang-format-${llvm_version} llvm-${llvm_version} \
+    && sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${llvm_version} 100 \
+    && sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${llvm_version} 100 \
+    && sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-${llvm_version} 100 \
+    && sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-${llvm_version} 100 \
+    && sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${llvm_version} 100 \
+    && sudo update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-${llvm_version} 100 \
+    && sudo rm -rf /var/lib/apt/lists/* \
+    && sudo apt-get clean
+    
+USER radiuss
+WORKDIR /home/radiuss
