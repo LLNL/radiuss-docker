@@ -1,9 +1,8 @@
 ARG ubuntu_version
-#FROM ghcr.io/rse-ops/ubuntu:$ubuntu_version
-FROM ubuntu-base
-# ARG gcc_version
-# ENV gcc_version=$gcc_version
-ENV gcc_version=9
+FROM ghcr.io/llnl/ubuntu:$ubuntu_version
+
+ARG gcc_version
+ENV gcc_version=$gcc_version
 
 RUN \
     sudo apt-get -qq update \

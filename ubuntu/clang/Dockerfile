@@ -1,8 +1,7 @@
 ARG ubuntu_version
 FROM ghcr.io/llnl/ubuntu:$ubuntu_version
 
-# Install llvm with spack
-# ARG llvm_version
+ARG llvm_version
 ENV llvm_version=${llvm_version}
 
 RUN \

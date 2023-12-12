@@ -1,14 +1,23 @@
 dockerbuild:
+
+  exclude:
+    gcc_version: ["11", "12", "13", "8", "9", "10"]
+    ubuntu_version: ["20.04", "20.04", "20.04", "22.04", "22.04", "22.04"]
+
   build_args:
     gcc_version:
       key: gcc
       versions:
-       - "9.4.0"
-       - "10.3.0"
-       - "11.2.0"
+       - "8"
+       - "9"
+       - "10" #20.04
+       - "11"
+       - "12"
+       - "13"
 
     # Look for ubuntu versions for our base builds
     ubuntu_version:
       key: ubuntu
       versions:
         - "20.04"
+        - "22.04"
