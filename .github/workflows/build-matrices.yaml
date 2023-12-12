@@ -136,15 +136,3 @@ jobs:
       env:
         container: ${{ matrix.result.container_name }}
       run: docker push ${container}
-
-    - name: Run Librarian
-      id: runner
-      uses: rse-ops/librarian/docker-images@main
-      if: (github.event_name != 'pull_request')
-      with:
-          container: ${{ steps.builder.outputs.uri }} 
-          dockerfile: ${{ steps.builder.outputs.dockerfile_dir }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          outdir: _library
-          # defaults to branch: gh-pages, deploy: true, outdir: pwd
-          # outdir is in context of the gh-pages branch, not here.
