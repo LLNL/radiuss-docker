@@ -1,6 +1,7 @@
 FROM ubuntu:22.04
 
 LABEL maintainer="Chris White <white238@llnl.gov>,@vsoch,David Beckingsale <beckingsale1@llnl.gov>"
+LABEL org.opencontainers.image.source=https://github.com/LLNL/radiuss-docker
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Los_Angeles
