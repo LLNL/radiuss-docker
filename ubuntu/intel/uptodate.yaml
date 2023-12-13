@@ -9,7 +9,7 @@ dockerbuild:
     # Look for ubuntu versions for our base builds
     ubuntu_version:
       key: ubuntu
-      name: ghcr.io/rse-ops/ubuntu
+      name: ghcr.io/llnl/ubuntu
       type: container
       startat: "20.04"
       filter: 

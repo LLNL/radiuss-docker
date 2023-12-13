@@ -1,5 +1,8 @@
 ARG ubuntu_version
-FROM ghcr.io/llnl/ubuntu:$ubuntu_version
+FROM ghcr.io/llnl/radiuss-ubuntu:$ubuntu_version
+
+LABEL maintainer="Chris White <white238@llnl.gov>,@vsoch,David Beckingsale <beckingsale1@llnl.gov>"
+LABEL org.opencontainers.image.source=https://github.com/LLNL/radiuss-docker
 
 ARG llvm_version
 ENV llvm_version=${llvm_version}
