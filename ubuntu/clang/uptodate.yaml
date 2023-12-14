@@ -1,4 +1,5 @@
 dockerbuild:
+  container_basename: radiuss
 
   # Specific combinations of build args to exclude (optional)
   # Spack doesn't work with 14 nor 15
@@ -8,7 +9,7 @@ dockerbuild:
 
   build_args:
     llvm_version:
-      key: llvm
+      key: clang
       versions:
         - "10"
         - "11"

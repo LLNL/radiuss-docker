@@ -1,5 +1,5 @@
-ARG ubuntu_version
-FROM ghcr.io/llnl/radiuss-gcc:$ubuntu_version
+ARG gcc_version
+FROM ghcr.io/llnl/radiuss:gcc-$gcc_version
 
 # Install llvm with spack
 ARG cuda_version

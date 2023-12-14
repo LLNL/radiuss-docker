@@ -1,4 +1,5 @@
 dockerbuild:
+  container_basename: radiuss
 
   exclude:
     gcc_version: ["11", "12", "13", "8", "9", "10"]
