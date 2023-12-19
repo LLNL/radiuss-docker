@@ -1,22 +1,26 @@
-ARG gcc_version
-FROM ghcr.io/llnl/radiuss:gcc-$gcc_version
+ARG ubuntu_version
+FROM ghcr.io/llnl/radiuss:gcc-9-ubuntu-${ubuntu_version}
 
-# Install llvm with spack
 ARG cuda_version
 ENV cuda_version=$cuda_version
 
+USER root
+
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN \
-    sudo apt-get -qq update \
-    && sudo apt-get -qq install -y --no-install-recommends \
-        clang-${llvm_version} clang-format-${llvm_version} llvm-${llvm_version} \
-    && sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${llvm_version} 100 \
-    && sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${llvm_version} 100 \
-    && sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-${llvm_version} 100 \
-    && sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-${llvm_version} 100 \
-    && sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${llvm_version} 100 \
-    && sudo update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-${llvm_version} 100 \
-    && sudo rm -rf /var/lib/apt/lists/* \
-    && sudo apt-get clean
+    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin \
+    && mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
+    && apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub  \
+    && add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /" \
+    && apt-get -qq update \
+    && apt-get -qq install -y --no-install-recommends cuda-${cuda_version} \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
     
 USER radiuss
+
+RUN echo 'export PATH=/usr/local/cuda/bin:$PATH' >> ~/.bashrc \
+    && echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+
 WORKDIR /home/radiuss
