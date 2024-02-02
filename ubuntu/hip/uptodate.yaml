@@ -1,6 +1,4 @@
 dockerbuild:
-
-dockerbuild:
   container_basename: radiuss
 
   matrix:
@@ -17,5 +15,5 @@ dockerbuild:
       name: hip
 
     ubuntu_version:
-      key: hip
-      name: hip
+      key: ubuntu
+      name: ubuntu
