@@ -1,16 +1,19 @@
 dockerbuild:
+  container_basename: radiuss
+
+  matrix:
+    intel_version:
+      - "2023.1.0"
+      - "2024.0"
+    ubuntu_version:
+      - "20.04"
+      - "20.04"
+
   build_args:
     intel_version:
       key: intel
-      name: intel-oneapi-compilers
-      type: spack
-      startat: "2021.2.0"
+      name: intel
 
-    # Look for ubuntu versions for our base builds
     ubuntu_version:
       key: ubuntu
-      name: ghcr.io/llnl/ubuntu
-      type: container
-      startat: "20.04"
-      filter: 
-        - "^[0-9]+[.]04$"
+      name: ubuntu
