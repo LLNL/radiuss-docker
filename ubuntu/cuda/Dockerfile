@@ -1,5 +1,5 @@
 ARG ubuntu_version
-FROM ghcr.io/llnl/radiuss:gcc-13-ubuntu-${ubuntu_version}
+FROM ghcr.io/llnl/radiuss:gcc-12-ubuntu-${ubuntu_version}
 
 ARG cuda_version
 ENV cuda_version=$cuda_version
