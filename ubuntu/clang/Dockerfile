@@ -10,7 +10,7 @@ ENV llvm_version=${llvm_version}
 RUN \
     sudo apt-get -qq update \
     && sudo apt-get -qq install -y --no-install-recommends \
-        clang-${llvm_version} clang-format-${llvm_version} llvm-${llvm_version} \
+        clang-${llvm_version} clang-format-${llvm_version} llvm-${llvm_version} libomp-${llvm_version}-dev \
     && sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${llvm_version} 100 \
     && sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${llvm_version} 100 \
     && sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-${llvm_version} 100 \
