@@ -6,7 +6,7 @@ This repository contains Dockerfiles for CI builds for any project that might
 be interested. The image builds are automated and self-updating, and process
 described more below in detail. You can see the listing of updated builds at:
 
-[RADIUSS DOCKER BUILDS TABLE](https://github.com/llnl/radiuss-docker/pkgs/container/radiuss/versions)
+[RADIUSS Docker Builds Table](https://github.com/llnl/radiuss-docker/pkgs/container/radiuss/versions)
 
 The tags listed on this page can be used with the following pattern in `Dockerfile`s,
 `ghcr.io/llnl/radiuss:<tag>`. For example, `gcc-12-ubuntu-22.04` becomes
