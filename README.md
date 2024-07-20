@@ -8,7 +8,7 @@ described more below in detail. You can see the listing of updated builds at:
 
 [RADIUSS Docker Builds Table](https://github.com/llnl/radiuss-docker/pkgs/container/radiuss/versions)
 
-The tags listed on this page can be used with the following pattern in `Dockerfile`s,
+The tags listed on this page can be used with the following pattern in Dockerfile's,
 `ghcr.io/llnl/radiuss:<tag>`. For example, `gcc-12-ubuntu-22.04` becomes
 `ghcr.io/llnl/radiuss:gcc-12-ubuntu-22.04`.
 
