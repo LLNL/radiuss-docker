@@ -1,4 +1,4 @@
-FROM ubuntu:22.04@sha256:f426dd3b1acc6ef243bae983048415e11a34fa6098d17140e07f5fd4fabc9abd
+FROM ubuntu:22.04@sha256:58b87898e82351c6cf9cf5b9f3c20257bb9e2dcf33af051e12ce532d7f94e3fe
 
 LABEL maintainer="Chris White <white238@llnl.gov>,@vsoch,David Beckingsale <beckingsale1@llnl.gov>"
 LABEL org.opencontainers.image.source=https://github.com/LLNL/radiuss-docker
