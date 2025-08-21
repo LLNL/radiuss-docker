@@ -11,7 +11,9 @@ on:
     - cron: 0 1 * * *
 
   # On pull request we test updates to images
-  pull_request: []
+  pull_request:
+    types:
+      [opened]
  
   # On push to main we build and deploy images
   push: 
