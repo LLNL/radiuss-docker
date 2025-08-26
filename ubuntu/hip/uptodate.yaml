@@ -3,11 +3,9 @@ dockerbuild:
 
   matrix:
     ubuntu_version:
-       - "20.04"
-       - "20.04"
+       - "24.04"
     hip_version:
-       - "5.6.1"
-       - "6.0.2"
+       - "6.4.3"
        
   build_args:
     hip_version:
