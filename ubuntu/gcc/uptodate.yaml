@@ -1,10 +1,6 @@
 dockerbuild:
   container_basename: radiuss
 
-  exclude:
-    gcc_version: ["11", "12"]
-    ubuntu_version: ["24.04", "24.04"]
-
   build_args:
     gcc_version:
       key: gcc
@@ -18,5 +14,4 @@ dockerbuild:
     ubuntu_version:
       key: ubuntu
       versions:
-        - "22.04"
         - "24.04"
