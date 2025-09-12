@@ -9,10 +9,10 @@ USER root
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN \
-    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin \
-    && mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
-    && apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub  \
-    && add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /" \
+    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu${ubuntu_version//./}/x86_64/cuda-ubuntu${ubuntu_version//./}.pin \
+    && mv cuda-ubuntu${ubuntu_version//./}.pin /etc/apt/preferences.d/cuda-repository-pin-600 \
+    && apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu${ubuntu_version//./}/x86_64/3bf863cc.pub  \
+    && add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu${ubuntu_version//./}/x86_64/ /" \
     && apt-get -qq update \
     && apt-get -qq install -y --no-install-recommends cuda-${cuda_version} \
     && rm -rf /var/lib/apt/lists/* \
