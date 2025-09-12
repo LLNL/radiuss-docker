@@ -1,6 +1,6 @@
 ARG hip_version
 ARG ubuntu_version
-FROM ghcr.io/llnl/radiuss:gcc-9-ubuntu-${ubuntu_version}
+FROM ghcr.io/llnl/radiuss:gcc-13-ubuntu-${ubuntu_version}
 
 ARG hip_version
 ENV hip_version=$hip_version

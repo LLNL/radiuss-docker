@@ -4,9 +4,4 @@ dockerhierarchy:
     filter: 
      # we only want XX.04 versions
      - "^[0-9]+[.]04$"
-    startat: "20.04"
-    
-    # Versions to skip (not LTS releases)
-    skips:
-      - "19.04"
-      - "21.04"
+    startat: "24.04"
