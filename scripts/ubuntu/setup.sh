@@ -40,10 +40,6 @@ apt-get -qq install -y --no-install-recommends "${packages[@]}" "$@"
 rm -rf /var/lib/apt/lists/*
 apt-get clean
 
-# Install Clingo for Spack
-python3 -m pip install --upgrade pip
-python3 -m pip install clingo
-
 # Setup radiuss user
 useradd -ms /bin/bash radiuss
 printf "radiuss:radiuss" | chpasswd
