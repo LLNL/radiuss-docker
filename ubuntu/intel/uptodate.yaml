@@ -3,7 +3,7 @@ dockerbuild:
 
   matrix:
     intel_version:
-      - "2025.2.1"
+      - "2024.2"
     ubuntu_version:
       - "24.04"
 
